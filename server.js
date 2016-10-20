@@ -18,7 +18,7 @@ app.get('/article-two', function (req, res) {
 });
 
 app.get('/article-three', function (req, res) {
-  res.sendFile("Article three will be displayed shortly.");
+  res.send("Article three will be displayed shortly.");
 });
 
 app.get('/ui/style.css', function (req, res) {
