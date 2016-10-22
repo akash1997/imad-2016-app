@@ -21,10 +21,9 @@ app.get('/article-three', function (req, res) {
   res.send("Article three will be displayed shortly.");
 });
 
-
-/*app.get('/ui/main.js', function (req, res) {
+app.get('/ui/main.js', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'main.js'));
-});*/
+});
 
 app.get('/ui/madi.png', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'madi.png'));
