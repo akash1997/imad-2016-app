@@ -5,19 +5,37 @@ var path = require('path');
 var app = express();
 app.use(morgan('combined'));
 
-var articleOne = {
-    title: 'Article One | Akash Agrawal',
-    heading: 'Article One',
-    date: 'Oct 23,2016',
-    content: `<p>
-                    This is my first Article.This is my first Article.This is my first Article.This is my first Article.This is my first Article.This is my first Article.This is my first Article.
-                </p>
-                <p>
-                    This is my first Article.This is my first Article.This is my first Article.This is my first Article.This is my first Article.This is my first Article.This is my first Article.
-                </p>
-                <p>
-                    This is my first Article.This is my first Article.This is my first Article.This is my first Article.This is my first Article.This is my first Article.This is my first Article.
-                </p> `
+var articles = {
+    article-one: {
+        title: 'Article One | Akash Agrawal',
+        heading: 'Article One',
+        date: 'Oct 23,2016',
+        content: `<p>
+                        This is my first Article.This is my first Article.This is my first Article.This is my first Article.This is my first Article.This is my first Article.This is my first Article.
+                    </p>
+                    <p>
+                        This is my first Article.This is my first Article.This is my first Article.This is my first Article.This is my first Article.This is my first Article.This is my first Article.
+                    </p>
+                    <p>
+                        This is my first Article.This is my first Article.This is my first Article.This is my first Article.This is my first Article.This is my first Article.This is my first Article.
+                    </p> `
+    },
+    article-two: {
+        title: 'Article Two | Akash Agrawal',
+        heading: 'Article Two',
+        date: 'Oct 23,2016',
+        content: `<p>
+                        This is my second Article.
+                  </p> `
+    },
+    article-three: {
+        title: 'Article Three | Akash Agrawal',
+        heading: 'Article Three',
+        date: 'Oct 23,2016',
+        content: `<p>
+                        This is my third Article.
+                  </p> `
+    }
 };
 
 function createTemplate(data) {
@@ -62,7 +80,7 @@ app.get('/', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'index.html'));
 });
 
-app.get('/article-one', function (req, res) {
+/*app.get('/article-one', function (req, res) {
   res.send(createTemplate(articleOne));
 });
 
@@ -72,6 +90,11 @@ app.get('/article-two', function (req, res) {
 
 app.get('/article-three', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'article-three.html'));
+});*/
+
+app.get('/:articleName', function (req, res) {
+  var articleName=req.params.articleName;
+  res.send(createTemplate(articles[articleName]));
 });
 
 app.get('/ui/main.js', function (req, res) {
