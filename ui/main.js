@@ -50,5 +50,5 @@ submit.onclick = function() {
         list+='<li>'+name[i]+'</li>';
     }
     var ul = document.getElementById('nameList');
-    ul.innerHtML = list;
+    ul.innerHTML = list;
 }
